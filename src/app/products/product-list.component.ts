@@ -3,7 +3,8 @@ import {IProduct} from './product';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './product-list.component.html'
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.sass']
 })
 export class ProductListComponent {
   pageTitle = 'Product List';
