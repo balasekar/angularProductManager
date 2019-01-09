@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
       'releaseDate': 'December 19, 2018',
       'description': '15 Gallon capacity rolling garden cart',
       'price': 32.99,
-      'rating': 4.2,
+      'rating': 3.2,
       'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png'
     },
     {
