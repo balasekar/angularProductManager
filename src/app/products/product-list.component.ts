@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
   imageWidth = 50;
   imageMargin = 2;
   showImage = false;
-  private _listFilter = 'cart';
+  private _listFilter;
 
   get listFilter(): string {
     return this._listFilter;
@@ -26,32 +26,9 @@ export class ProductListComponent implements OnInit {
   }
 
   filteredProducts: IProduct[];
-  products: IProduct[] = [
-    {
-      'productId': 1,
-      'productName': 'Garden Cart',
-      'productCode': 'GDN-0023',
-      'releaseDate': 'December 19, 2018',
-      'description': '15 Gallon capacity rolling garden cart',
-      'price': 32.99,
-      'rating': 3.2,
-      'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png'
-    },
-    {
-      'productId': 2,
-      'productName': 'Hammer',
-      'productCode': 'TBX-0048',
-      'releaseDate': 'December 19, 2018',
-      'description': 'Curved claw steel hammer',
-      'price': 9.99,
-      'rating': 4.8,
-      'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png'
-    }
-  ];
+  products: IProduct[] = [];
 
-  constructor() {
-    this.filteredProducts = this.products;
-    this.listFilter = 'cart';
+  constructor(private productService: ProductService) {
   }
 
   performFilter(filterBy: string): IProduct[] {
@@ -64,7 +41,8 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Product Component On Init');
+    this.products = this.productService.getProducts();
+    this.filteredProducts = this.products;
   }
 
   onRatingClicked(message: string): void {
